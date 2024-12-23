@@ -1,0 +1,11 @@
+@mixin override() {
+    .mat-mdc-slide-toggle .mdc-form-field {
+        --mdc-theme-text-primary-on-background: var(--foreground-text);
+        --mdc-switch-unselected-handle-color: var(--background-toggle);
+        --mdc-switch-unselected-icon-color: var(--foreground-toggle);
+        --mdc-switch-unselected-track-color: var(--background-toggle-track);
+        --mdc-switch-unselected-hover-handle-color: var(--background-toggle);
+        --mdc-switch-unselected-focus-handle-color: var(--background-toggle);
+        --mdc-switch-unselected-pressed-handle-color: var(--background-toggle);
+    }
+}

@@ -1,0 +1,74 @@
+@use '../variables' as vars;
+
+$theme: (
+  // Color Variants
+  primary:
+    (
+      light: #ffca4d,
+      light-contrast: vars.$dark-text,
+      base: #efab66,
+      base-contrast: vars.$dark-text,
+      dark: #ffa300,
+      dark-contrast: vars.$dark-text
+    ),
+  accent: (
+    light: #464646,
+    light-contrast: vars.$light-text,
+    base: #2a2a2a,
+    base-contrast: vars.$light-text,
+    dark: #000000,
+    dark-contrast: vars.$light-text
+  ),
+  warn: (
+    light: #e57373,
+    light-contrast: vars.$dark-text,
+    base: #f44336,
+    base-contrast: vars.$light-text,
+    dark: #d32f2f,
+    dark-contrast: vars.$light-text
+  ),
+  caution: (
+    light: #ffff72,
+    light-contrast: vars.$dark-text,
+    base: #ffeb3b,
+    base-contrast: vars.$dark-text,
+    dark: #c8b900,
+    dark-contrast: vars.$dark-text
+  ),
+  success: (
+    light: #81c784,
+    light-contrast: vars.$dark-text,
+    base: #4caf50,
+    base-contrast: vars.$light-text,
+    dark: #388e3c,
+    dark-contrast: vars.$light-text
+  ),
+  info: (
+    light: #64b5f6,
+    light-contrast: vars.$dark-text,
+    base: #2196f3,
+    base-contrast: vars.$light-text,
+    dark: #1976d2,
+    dark-contrast: vars.$light-text
+  ),
+  // Background Colors
+  background:
+    (
+      base: rgba(12, 12, 12),
+      card: rgb(55, 55, 55),
+      button: rgb(42, 42, 42),
+      disabled-button: rgba(255, 255, 255, 0.12),
+      input: rgb(26, 26, 26),
+      toggle: rgb(158, 158, 158),
+      toggle-track: rgb(97, 97, 97)
+    ),
+  // Foreground Colors
+  foreground:
+    (
+      text: rgb(255, 255, 255),
+      disabled-button: rgba(255, 255, 255, 0.3),
+      input: rgba(255, 255, 255, 0.87),
+      input-label: rgba(255, 255, 255, 0.87),
+      toggle: rgb(21, 21, 21)
+    )
+);

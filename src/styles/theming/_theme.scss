@@ -1,0 +1,10 @@
+@use './themes/dark' as dark;
+@use './themes/light' as light;
+@use './theme-mixins' as theming;
+
+$themes: (
+  dark: dark.$theme,
+  light: light.$theme
+);
+
+@include theming.create-mat-themes($themes);

@@ -1,0 +1,36 @@
+@mixin override() {
+  .mat-mdc-form-field {
+    --mdc-filled-text-field-container-color: var(--background-input);
+    --mdc-filled-text-field-input-text-color: var(--foreground-input);
+    --mdc-filled-text-field-label-text-color: var(--foreground-input-label);
+    --mdc-filled-text-field-focus-label-text-color: var(--primary-base);
+    --mdc-filled-text-field-focus-active-indicator-color: var(--primary-base);
+  }
+
+  .mat-mdc-select-panel {
+    --mat-select-panel-background-color: var(--background-card);
+  }
+
+  .mat-mdc-select {
+    --mat-select-enabled-trigger-text-color: var(--foreground-input);
+  }
+
+  .mat-pseudo-checkbox-full {
+    color: var(--foreground-text);
+
+    &:after {
+      color: var(--background-card) !important;
+    }
+  }
+
+  .mat-mdc-autocomplete-panel {
+    --mat-autocomplete-background-color: var(--background-card);
+  }
+
+  .mat-mdc-option {
+    --mat-option-label-text-color: var(--foreground-text);
+    --mat-option-selected-state-label-text-color: var(--primary-base);
+    --mat-option-focus-state-layer-color: red;
+    --mat-option-hover-state-layer-color: green;
+  }
+}

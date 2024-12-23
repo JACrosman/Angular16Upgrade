@@ -1,0 +1,33 @@
+@mixin override() {
+  .mat-mdc-raised-button[disabled][disabled] {
+    --mdc-protected-button-disabled-container-color: var(--background-disabled-button);
+    --mdc-protected-button-disabled-label-text-color: var(--foreground-disabled-button);
+  }
+
+  .mat-mdc-raised-button.mat-unthemed {
+    --mdc-protected-button-container-color: var(--background-button);
+    --mdc-protected-button-label-text-color: var(--foreground-text);
+  }
+
+  .mat-mdc-raised-button.mat-primary {
+    --mdc-protected-button-label-text-color: var(--primary-base-contrast);
+  }
+  
+  .mat-mdc-raised-button.mat-accent {
+    --mdc-protected-button-label-text-color: var(--accent-base-contrast);
+  }
+  
+  .mat-mdc-raised-button.mat-warn {
+    --mdc-protected-button-label-text-color: var(--warn-base-contrast);
+  }
+  
+  .mat-mdc-raised-button.mat-success {
+    --mdc-protected-button-container-color: var(--success-base);
+    --mdc-protected-button-label-text-color: var(--success-base-contrast);
+  }
+  
+  .mat-mdc-raised-button.mat-info {
+    --mdc-protected-button-container-color: var(--info-base);
+    --mdc-protected-button-label-text-color: var(--info-base-contrast);
+  }
+}

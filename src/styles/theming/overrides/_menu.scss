@@ -1,0 +1,7 @@
+@mixin override() {
+    .mat-mdc-menu-panel {
+        --mat-menu-container-color: var(--background-card);
+        --mat-menu-item-label-text-color: var(--foreground-text);
+        --mat-menu-item-icon-color: var(--foreground-text);
+    }
+}

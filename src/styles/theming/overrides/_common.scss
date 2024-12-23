@@ -1,0 +1,6 @@
+@mixin override() {
+  .mat-app-background {
+    background: var(--background-base);
+    color: var(--foreground-text);
+  }
+}

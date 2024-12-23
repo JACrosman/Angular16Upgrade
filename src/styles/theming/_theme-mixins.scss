@@ -1,0 +1,129 @@
+@use '@angular/material' as mat;
+
+@use './overrides/common' as common;
+@use './overrides/button' as button;
+@use './overrides/input' as input;
+@use './overrides/card' as card;
+@use './overrides/menu' as menu;
+@use './overrides/slide-toggle' as slide-toggle;
+
+@function update-nested-map($map, $outer-key, $inner-key, $new-value) {
+  $nested-map: map-get($map, $outer-key);
+  $updated-nested-map: map-merge($nested-map, ($inner-key: $new-value));
+  $updated-map: map-merge($map, ($outer-key: $updated-nested-map));
+  @return $updated-map;
+}
+
+@mixin create-mat-themes($themes) {
+  // Include base material themes
+  @include mat.core();
+
+  // Define color variants
+  $primary: mat.define-palette(generate-palette(primary));
+  $accent: mat.define-palette(generate-palette(accent), A200, A100, A400);
+  $warn: mat.define-palette(generate-palette(warn));
+
+  // Define mat theme
+  $theme: mat.define-light-theme(
+    (
+      color: (
+        primary: $primary,
+        accent: $accent,
+        warn: $warn
+      ),
+      typography: mat.define-typography-config(),
+      density: 0
+    )
+  );
+
+  // Include all component themes
+  @include mat.all-component-themes($theme);
+
+  // Include theme overrides
+  @include common.override();
+  @include button.override();
+  @include input.override();
+  @include card.override();
+  @include menu.override();
+  @include slide-toggle.override();
+
+  // Generate necessary css variables
+  @each $name, $theme in $themes {
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    .#{$name} {
+      // Color variants
+      @include color-variant(primary, $theme);
+      @include color-variant(accent, $theme);
+      @include color-variant(warn, $theme);
+      @include color-variant(success, $theme);
+      @include color-variant(info, $theme);
+
+      // Background/Foreground colors
+      @include map-variant($background, background);
+      @include map-variant($foreground, foreground);
+    }
+  }
+}
+
+@mixin color-variant($name, $theme) {
+  $variant: map-get($theme, $name);
+
+  --#{$name}-base: #{map-get($variant, base)};
+  --#{$name}-base-contrast: #{map-get($variant, base-contrast)};
+
+  --#{$name}-light: #{map-get($variant, light)};
+  --#{$name}-light-contrast: #{map-get($variant, light-contrast)};
+
+  --#{$name}-dark: #{map-get($variant, dark)};
+  --#{$name}-dark-contrast: #{map-get($variant, dark-contrast)};
+}
+
+@mixin map-variant($config, $mapName) {
+  @each $name, $value in $config {
+    --#{$mapName}-#{$name}: #{$value};
+  }
+}
+
+@function generate-palette($name) {
+  $light: var(--#{$name}-light);
+  $base: var(--#{$name}-base);
+  $dark: var(--#{$name}-dark);
+  $light-contrast: var(--#{$name}-light-contrast);
+  $base-contrast: var(--#{$name}-base-contrast);
+  $dark-contrast: var(--#{$name}-dark-contrast);
+
+  @return (
+    50: $light,
+    100: $light,
+    200: $light,
+    300: $light,
+    400: $light,
+    500: $base,
+    600: $dark,
+    700: $dark,
+    800: $dark,
+    900: $dark,
+    A100: $dark,
+    A200: $dark,
+    A400: $dark,
+    A700: $dark,
+    contrast: (
+      50: $light-contrast,
+      100: $light-contrast,
+      200: $light-contrast,
+      300: $light-contrast,
+      400: $light-contrast,
+      500: $base-contrast,
+      600: $dark-contrast,
+      700: $dark-contrast,
+      800: $dark-contrast,
+      900: $dark-contrast,
+      A100: $light-contrast,
+      A200: $light-contrast,
+      A400: $light-contrast,
+      A700: $light-contrast
+    )
+  );
+}

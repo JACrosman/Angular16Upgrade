@@ -1,0 +1,5 @@
+@mixin override() {
+  .mat-mdc-card {
+    --mdc-elevated-card-container-color: var(--background-card);
+  }
+}
